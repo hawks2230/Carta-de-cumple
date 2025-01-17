@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Cumpleaños</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffeef5;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-frame {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 5px solid #ffcccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-frame:nth-child(1) {
+            top: 10%;
+            left: 5%;
+        }
+
+        .photo-frame:nth-child(2) {
+            top: 20%;
+            right: 10%;
+        }
+
+        .photo-frame:nth-child(3) {
+            bottom: 15%;
+            left: 10%;
+        }
+
+        .photo-frame:nth-child(4) {
+            bottom: 10%;
+            right: 15%;
+        }
+
+        .card {
+            position: relative;
+            width: 250px;
+            height: 150px;
+            background-color: #ffc0cb;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 125px solid transparent;
+            border-right: 125px solid transparent;
+            border-bottom: 75px solid #ffc0cb;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: red;
+            transform: rotate(-45deg);
+            top: 10%;
+            left: 5%;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -12.5px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 12.5px;
+            top: 0;
+        }
+
+        .paper {
+            display: none;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -10%);
+            width: 220px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -10%);
+                opacity: 1;
+            }
+        }
+
+        .message {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="photo-frame">
+        <img src="img/abi1.jpg" alt="Foto 1">
+    </div>
+    <div class="photo-frame">
+        <img src="img/abi6.jpg" alt="Foto 2">
+    </div>
+    <div class="photo-frame">
+        <img src="img/abi4.jpg" alt="Foto 3">
+    </div>
+    <div class="photo-frame">
+        <img src="img/abi5.jpg" alt="Foto 4">
+    </div>
+
+    <div class="card" onclick="togglePaper()">
+        <div class="heart"></div>
+        <p style="text-align: center; color: white; font-size: 16px; font-weight: bold;">Dale click</p>
+        <div class="paper" id="paper">
+            <p class="message">Feliz cumpleaños a la niña más linda y graciosa que existe, gracias por estar en mi vida.<br> 
+            Por muchos cumpleaños juntos (Todos muejeje)</p>
+            <div class="heart-icon">❤</div>
+        </div>
+    </div>
+
+    <script>
+        function togglePaper() {
+            const paper = document.getElementById('paper');
+            paper.style.display = paper.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
